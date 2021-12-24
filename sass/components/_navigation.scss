@@ -1,0 +1,164 @@
+.navigation {
+  &__input {
+    display: none;
+  }
+
+  &__input:checked ~ &__background {
+    transform: scale(70);
+  }
+
+  &__input:checked + &__label &__label-span {
+    background-color: transparent;
+  }
+
+  &__input:checked + &__label &__label-span:after {
+    transform: rotate(135deg);
+    top: 0;
+  }
+  &__input:checked + &__label &__label-span:before {
+    transform: rotate(-135deg);
+    bottom: 0;
+  }
+
+  &__input:checked ~ &__navbar {
+    width: 100vw;
+    visibility: visible;
+    opacity: 1;
+  }
+  &__input:checked ~ &__navbar &__list {
+    left: 50%;
+  }
+
+  &__label {
+    position: fixed;
+    right: 8rem;
+    top: 8rem;
+    @include respond(tab-port) {
+      top: 3rem;
+      right: 3rem;
+    }
+    display: inline-block;
+    width: 6rem;
+    height: 6rem;
+    background-color: $color-white;
+    border-radius: 50%;
+    box-shadow: 0 1rem 3rem rgba($color-black, 0.2);
+    cursor: pointer;
+    z-index: 30;
+
+    &:hover &-span:before {
+      bottom: 8px;
+    }
+    &:hover &-span:after {
+      top: 8px;
+    }
+
+    &-span {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: inline-block;
+      width: 3rem;
+      height: 1.8px;
+      background-color: $color-black;
+
+      &:after {
+        content: "";
+        position: absolute;
+        display: inline-block;
+        top: 6px;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $color-black;
+        transition: all 0.2s;
+      }
+      &:before {
+        content: "";
+        position: absolute;
+        display: inline-block;
+        bottom: 6px;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $color-black;
+        transition: all 0.2s;
+      }
+    }
+  }
+
+  &__background {
+    width: 6rem;
+    height: 6rem;
+    z-index: -1;
+    border-radius: 50%;
+    background-image: radial-gradient($color-primary, $color-primary-light);
+    position: fixed;
+    right: 8rem;
+    top: 8rem;
+    transition: all 0.5s;
+    z-index: 2;
+
+    @include respond(tab-port) {
+      right: 3rem;
+      top: 3rem;
+    }
+  }
+
+  &__navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    width: 70%;
+    height: 100vh;
+    opacity: 0;
+    z-index: 20;
+    transition: all 0.5s cubic-bezier(0.18, 0.3, 0, 1.34);
+  }
+
+  &__list {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(-50%, -50%);
+    transition: all 0.5s cubic-bezier(0.18, 0.3, 0, 1.34);
+  }
+
+  &__item {
+    list-style-type: none;
+    text-align: center;
+    background-image: linear-gradient(
+      120deg,
+      transparent 50%,
+      $color-white 50%
+    );
+    background-repeat: no-repeat;
+    background-size: 220%;
+    transition: all 0.5s;
+
+    &:hover,
+    &:active {
+      color: $color-primary;
+      background-position: 100%;
+      transform: translateX(1rem);
+    }
+  }
+
+  &__link {
+    &:hover,
+    &:active {
+      color: $color-primary;
+    }
+    transition: all 0.5s;
+
+    padding: 1rem 2rem;
+    display: inline-block;
+    color: $color-white;
+    font-size: 3rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+}

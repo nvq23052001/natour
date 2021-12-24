@@ -1,0 +1,75 @@
+body {
+  font-family: "Lato", sans-serif;
+  line-height: 1.7;
+  font-weight: 400;
+  color: $color-grey-dark;
+  padding: 3rem;
+
+  @include respond(tab-port) {
+    padding: 0;
+  }
+}
+
+.heading__primary {
+  color: $color-white;
+  text-transform: uppercase;
+
+  &-main {
+    letter-spacing: 3.5rem;
+    font-weight: 500;
+    font-size: 6.8rem;
+    display: inline-block;
+    animation: moveInLeft 2s ease;
+
+    @include respond(tab-port) {
+      letter-spacing: 2.5rem;
+      font-size: 5.8rem;
+    }
+  }
+
+  &-sub {
+    display: block;
+    font-size: 2rem;
+    letter-spacing: 2rem;
+    animation: moveInRight 2s ease;
+
+    @include respond(tab-port) {
+      letter-spacing: 1rem;
+      font-size: 1.8rem;
+    }
+  }
+}
+
+.heading__secondary {
+  color: transparent;
+  font-size: 3.5rem;
+  font-weight: 700;
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+  background-image: linear-gradient(
+    to right,
+    $color-primary-light,
+    $color-primary-dark
+  );
+  -webkit-background-clip: text;
+  transition: all 0.2s ease-in-out;
+
+  @include respond(tab-port) {
+    font-size: 2.5rem;
+  }
+
+  &:hover {
+    transform: skew(8deg, 3deg);
+    text-shadow: 1rem 1.5rem 2rem rgba($color-black, 0.2);
+  }
+}
+
+.heading__tertiary {
+  font-size: 1.6rem;
+  text-transform: uppercase;
+}
+
+.paragrap {
+  margin-bottom: 2rem;
+  font-size: 1.4rem;
+}

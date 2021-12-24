@@ -1,0 +1,137 @@
+.book {
+  background-image: linear-gradient(
+      110deg,
+      rgba($color-white, 0.9) 50%,
+      transparent 50%
+    ),
+    url("../../img/nat-10.jpg");
+  background-size: cover;
+  box-shadow: 0 2rem 3rem rgba($color-black, 0.2);
+  border-radius: 3px;
+
+  @include respond(tab-land) {
+    background-image: linear-gradient(
+        110deg,
+        rgba($color-white, 0.9) 0%,
+        rgba($color-white, 0.9) 100%,
+        transparent 0%
+      ),
+      url("../../img/nat-10.jpg");
+  }
+
+  @include respond(tab-port) {
+    background-image: linear-gradient(
+        105deg,
+        rgba($color-white, 0.9) 0%,
+        rgba($color-white, 0.9) 100%,
+        transparent 0%
+      ),
+      url("../../img/nat-10.jpg");
+  }
+
+  &__form {
+    width: 50%;
+    padding: 6rem;
+
+    @include respond(tab-land) {
+      width: 80%;
+    }
+    @include respond(tab-port) {
+      width: 100%;
+    }
+  }
+
+  .form-input {
+    padding: 1.8rem 1.5rem;
+    width: 90%;
+    border: none;
+    border-radius: 3px;
+    outline: none;
+
+    @include respond(tab-land) {
+      width: 100%;
+    }
+    @include respond(tab-port) {
+      width: 100%;
+    }
+
+    &:focus:invalid {
+      border-bottom: 3px solid $color-orange-light;
+    }
+
+    &:focus {
+      border-bottom: 3px solid $color-primary;
+    }
+
+    &::placeholder {
+      color: $color-grey-dark-2;
+      font-size: 1.4rem;
+    }
+
+    &:placeholder-shown + .form-label {
+      transform: translateY(-4rem);
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+
+  .form-label {
+    display: block;
+    font-weight: 600;
+    font-size: 1.3rem;
+    margin-top: 0.5rem;
+    margin-left: 1.5rem;
+    transition: all 0.5s;
+
+    @include respond(tab-land) {
+      margin-top: 1.5rem;
+    }
+  }
+
+  .form__group-radio {
+    display: inline-block;
+    width: 49%;
+
+    @include respond(tab-port) {
+      width: 100%;
+      margin-bottom: 2rem;
+    }
+
+    .form-label-radio {
+      font-size: 1.6rem;
+      cursor: pointer;
+
+      &--btn {
+        display: inline-block;
+        position: relative;
+        top: 5px;
+        margin-top: 1px;
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 50%;
+        border: 4px solid $color-primary;
+
+        &:after {
+          content: "";
+          position: absolute;
+          width: 1.3rem;
+          height: 1.3rem;
+          border-radius: 50%;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background-color: $color-primary;
+          opacity: 0;
+          transition: all 0.3s ease;
+        }
+      }
+    }
+  }
+
+  .form-input-radio {
+    display: none;
+    &:checked ~ .form-label-radio .form-label-radio--btn:after {
+      opacity: 1;
+    }
+  }
+}
